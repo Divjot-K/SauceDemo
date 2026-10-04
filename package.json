@@ -1,0 +1,29 @@
+{
+  "name": "saucedemo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:chrome": "cypress run --browser chrome",
+    "cy:firefox": "cypress run --browser firefox",
+    "cy:smoke:chrome": "cypress run --browser chrome --expose grepTags=smoke,grepOmitFiltered=true --reporter cypress-mochawesome-reporter",
+    "cy:smoke:firefox": "cypress run --browser firefox --expose grepTags=smoke,grepOmitFiltered=true --reporter cypress-mochawesome-reporter",
+    "cy:report": "cypress run --browser chrome --reporter cypress-mochawesome-reporter"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@cypress/grep": "^7.0.0",
+    "@types/node": "^26.6.4",
+    "cypress": "^16.1.1",
+    "cypress-mochawesome-reporter": "^5.0.0",
+    "dotenv": "^18.0.5",
+    "prettier": "^3.9.9",
+    "typescript": "^7.0.2"
+  }
+}
