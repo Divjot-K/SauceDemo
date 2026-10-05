@@ -7,6 +7,8 @@ export default defineConfig({
       require("cypress-mochawesome-reporter/plugin")(on);
     },
   },
+  screenshotOnRunFailure: true,
+  screenshotsFolder: "cypress/screenshots",
   defaultCommandTimeout: 6000,
   pageLoadTimeout: 15000,
 });
