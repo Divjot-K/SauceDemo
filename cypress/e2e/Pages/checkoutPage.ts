@@ -68,5 +68,25 @@ class checkoutPage {
   verifyPDFDownloaded() {
     cy.task("findDownloadedOrderPdf").should("exist");
   }
+  verifyItemPriceIsCorrect() {
+    let total = 0.0;
+    this.elements.itemPriceText().then(($items) => {
+      const prices = [...$items].map((el) =>
+        parseFloat(el.textContent!.replace("$", "").trim()),
+      );
+      for (let i = 0; i < prices.length; i++) {
+        expect(prices[i]).to.be.greaterThan(0);
+        total += prices[i];
+      }
+    });
+    this.elements.finishButton().scrollIntoView();
+    this.elements.itemTotalText().then((totalText) => {
+      cy.log(totalText.text());
+      const totalPrice = parseFloat(
+        totalText.text().replace("Item total: $", "").trim(),
+      );
+      expect(totalPrice).to.equal(total);
+    });
+  }
 }
 export default new checkoutPage();
