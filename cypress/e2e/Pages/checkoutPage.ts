@@ -53,7 +53,6 @@ class checkoutPage {
     this.elements.taxText().should("exist");
     this.elements.totalAmountText().should("exist");
   }
-
   clickFinish() {
     this.elements.finishButton().should("be.enabled");
     this.elements.finishButton().click();
@@ -62,6 +61,12 @@ class checkoutPage {
   verifyCheckoutCompletePage() {
     cy.url().should("contain", "/checkout-complete.html");
     this.elements.checkoutTitle().should("have.text", "Checkout: Complete!");
+  }
+  clickGeneratePDF() {
+    this.elements.generatePDFButton().click();
+  }
+  verifyPDFDownloaded() {
+    cy.task("findDownloadedOrderPdf").should("exist");
   }
 }
 export default new checkoutPage();
